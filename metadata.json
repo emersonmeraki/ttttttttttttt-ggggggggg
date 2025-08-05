@@ -1,0 +1,6 @@
+{
+  "name": "Inglês diário",
+  "description": "Uma aplicação de leitura imersiva com um laboratório de estudos inteligente. Foque no texto, marque trechos e crie flashcards automaticamente com IA (Gemini) para memorizar vocabulário.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leitor Minimalista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overscroll-behavior: none;
+      }
+      /* Hide default cursor when custom one is active */
+      .custom-cursor-active {
+        cursor: none;
+      }
+      /* Custom selection color for the reader */
+      ::selection {
+        background-color: #67e8f9; /* Tailwind cyan-300 */
+        color: #1e293b; /* Tailwind slate-800 */
+      }
+      /* Pacer styles */
+      .pacer-word {
+          transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+          border-radius: 3px;
+          padding: 2px 1px;
+          margin: -2px -1px;
+      }
+      .pacer-word.highlighted {
+          background-color: rgba(150, 150, 150, 0.3);
+      }
+      .reader-content, .study-line-container {
+        transition: opacity 0.2s ease-in-out;
+      }
+      .reader-content.turning-page, .study-line-container.turning-page {
+        opacity: 0;
+      }
+      @keyframes fade-in-fast {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-fast {
+          animation: fade-in-fast 0.2s ease-out forwards;
+      }
+      @keyframes zoom-in-modal {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .animate-zoom-in {
+          animation: zoom-in-modal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .expression-highlight {
+          background-color: rgba(192, 132, 252, 0.55); /* purple-400 with 55% opacity */
+          cursor: help;
+          padding: 0 1px;
+          margin: 0 -1px;
+          border-radius: 3px;
+      }
+      .ipa-font {
+        font-family: 'Charis SIL', 'Doulos SIL', 'Gentium Plus', 'Segoe UI', 'Arial Unicode MS', 'Lucida Sans Unicode', sans-serif;
+      }
+      @keyframes ping-fade {
+        0% {
+            transform: scale(0.8);
+            opacity: 1;
+        }
+        80%, 100% {
+            transform: scale(1.2);
+            opacity: 0;
+        }
+      }
+      .animate-ping-fade {
+          animation: ping-fade 1s cubic-bezier(0, 0, 0.2, 1) forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.1.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.1.0/client",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
